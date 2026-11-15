@@ -55,12 +55,14 @@ for relative in ('index.html', 'cook/index.html'):
     assert f'/{TUTORIAL}/' in text, f'Tutorial missing in {relative}'
     for url in ('https://wydns.dpdns.org', 'https://blog.wydns.dpdns.org', 'https://game.wydns.dpdns.org', 'https://tv.wydns.dpdns.org'):
         assert url in text, f'Nav missing {url}'
-assert (SITE / 'notes/kitchen-notes/index.html').is_file(), 'Markdown post was not generated'
-assert '厨房笔记，从记录过程开始' in (SITE / 'index.html').read_text(), 'Post not automatically listed'
+# Verify real post inventory; examples live in excluded templates/.
+for post in (ROOT / '_posts').glob('*'):
+    if post.is_file():
+        assert post.stem.split('-', 3)[-1] in (SITE / 'index.html').read_text(), f'Post not listed: {post.name}'
 text = (SITE / TUTORIAL / 'index.html').read_text()
 assert any(m.get('name') == 'robots' and 'noindex' in m.get('content', '') for m in Page(text).metas), 'Tutorial lost noindex'
 urls = [e.text for e in ET.parse(SITE / 'sitemap.xml').iter() if e.tag.endswith('}loc')]
-assert len(urls) >= 3, f'Expected homepage, kitchen and at least one article: {urls}'
+assert len(urls) >= 2, f'Expected homepage and kitchen: {urls}'
 assert all(TUTORIAL not in u for u in urls), 'Tutorial indexed in sitemap'
 assert all(u.startswith('https://blog.wydns.dpdns.org/') for u in urls)
 assert 'Disallow:' not in (SITE / 'robots.txt').read_text(), 'Robots blocks crawl/noindex discovery'
