@@ -1,0 +1,31 @@
+title: WYDNS
+description: "记录厨房、日常与值得留下的实践。"
+url: "https://blog.wydns.dpdns.org"
+baseurl: ""
+lang: zh-CN
+timezone: Asia/Shanghai
+permalink: /notes/:title/
+markdown: kramdown
+highlighter: rouge
+strict_front_matter: true
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - scripts
+  - .bundle
+  - .github
+  - .local-gems
+  - test-results.txt
+  - templates
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post

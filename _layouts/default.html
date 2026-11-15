@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'zh-CN' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% if page.noindex %}<meta name="robots" content="noindex,follow">{% endif %}
+</head>
+<body>
+<a class="skip" href="#main">跳至正文</a>
+<header class="masthead wrap">
+  <a class="brand" href="{{ '/' | relative_url }}" aria-label="WYDNS 博客首页">WYDNS<span>手记 / JOURNAL</span></a>
+  <nav aria-label="站点导航">
+    <a href="https://wydns.dpdns.org">主站</a>
+    <a href="https://blog.wydns.dpdns.org" aria-current="page">博客</a>
+    <a href="https://game.wydns.dpdns.org">游戏</a>
+    <a href="https://tv.wydns.dpdns.org">影视</a>
+  </nav>
+</header>
+<main id="main" class="wrap">{{ content }}</main>
+<footer class="site-footer wrap"><span>WYDNS · 把值得留下的事，慢慢记下来。</span><a href="{{ '/cook/' | relative_url }}">厨房笔记 ↗</a></footer>
+</body>
+</html>
