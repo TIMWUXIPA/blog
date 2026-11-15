@@ -8,5 +8,5 @@ layout: default
     {% if page.description %}<p class="lede">{{ page.description | escape }}</p>{% endif %}
   </header>
   <div class="prose">{{ content }}</div>
-  <a class="back" href="{{ '/' | relative_url }}">← 返回全部手记</a>
+  <a class="back" href="{{ '/' | relative_url }}"><span data-i18n="backnotes">← 返回全部手记</span></a>
 </article>
