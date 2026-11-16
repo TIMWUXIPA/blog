@@ -1,0 +1,4 @@
+/assets/shared/wydns.*
+  Cache-Control: public, max-age=31536000, immutable
+/cook/avocado-codfish-tutorial/evidence/steps/*.webp
+  Cache-Control: public, max-age=604800
